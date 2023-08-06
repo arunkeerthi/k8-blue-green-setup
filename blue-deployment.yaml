@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blue-deployment
+spec:
+ replicas: 2
+ selector: 
+   matchLabels:
+     app: blue-app
+     version: v1
+     colour: blue
+ template:
+  metadata:
+    name: blueapp
+    labels:
+      app: blue-app
+      version: v1
+      colour: blue
+  spec:
+    containers:
+    - name: cont1
+      image: arunkeerthi3101/dep:v1
+      imagePullPolicy: Always
+      ports:
+      - containerPort: 80   
+...
