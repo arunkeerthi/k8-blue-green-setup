@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: green-deployment
+spec:
+ replicas: 2
+ selector: 
+   matchLabels:
+     app: green-app
+     version: v2
+     colour: green
+ template:
+  metadata:
+    name: green-app
+    labels:
+      app: green-app
+      version: v2
+      colour: green
+  spec:
+    containers:
+    - name: cont1
+      image: arunkeerthi3101/dep:v2
+      imagePullPolicy: Always
+      ports:
+      - containerPort: 80   
+...
